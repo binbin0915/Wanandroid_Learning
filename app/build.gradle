@@ -1,21 +1,36 @@
 apply plugin: 'com.android.application'
+apply from: 'tinkerpatch.gradle'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file("/Users/jere/gitRepository/JereTestApp/hztm.keystore")
+            storePassword "hztm6666"
+            keyAlias "hztmandroid"
+            keyPassword "hztm6666"
+        }
+    }
+
     compileSdkVersion 28
+
     defaultConfig {
         applicationId "com.jere.test"
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
+
     dataBinding {
         enabled = true
     }
@@ -43,6 +58,10 @@ dependencies {
     implementation 'com.android.support:design:28.0.0'
 
     implementation 'android.arch.persistence.room:rxjava2:1.1.1'
+
+    // 若使用annotation需要单独引用,对于tinker的其他库都无需再引用
+//    provided("com.tinkerpatch.tinker:tinker-android-anno:1.9.14.5")
+    implementation 'com.tinkerpatch.sdk:tinkerpatch-android-sdk:1.2.14.5'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

@@ -128,14 +128,17 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 //                startActivity(homeIntent);
                 HomeFragment homeFragment = HomeFragment.newInstance("Home Fragment", "jere test home");
                 replaceFragment(homeFragment);
+                Toast.makeText(this, "click home page tinker", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_fragment_1:
                 ArticleListFragment page1Fragment = ArticleListFragment.newInstance("page 1 Fragment", "jere test 1");
                 replaceFragment(page1Fragment);
+                Toast.makeText(this, "click page 1 fragment tinker", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_fragment_2:
                 Page2Fragment page2Fragment = Page2Fragment.newInstance("page 2 Fragment", "jere test 2");
                 replaceFragment(page2Fragment);
+                Toast.makeText(this, "click page 2 fragment tinker", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_fragment_3:
 //                Intent page3Intent = new Intent(this, Page3Activity.class);
